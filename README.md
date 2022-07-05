@@ -1,4 +1,6 @@
 # Docker Lnmp
+## Introduce
+* This is a simple and small Docker+Nginx+Php+Mysql+Phpmyadmin envirment
 
 ## Including
 * Nginx alpine
@@ -7,7 +9,7 @@
 * mysql 8
 * phpmyadmin lastest (default run in http://localhost:8085)
 
-## Install
+## Build image
 ```
 docker-compose build
 ```
