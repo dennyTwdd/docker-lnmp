@@ -1,0 +1,5 @@
+docker/mysql8/*
+docker/nginx/*.conf
+docker/apache/*.conf
+www/*
+!www/index.php
