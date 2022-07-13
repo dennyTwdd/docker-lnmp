@@ -24,4 +24,7 @@ RUN install-php-extensions intl
 # RUN install-php-extensions pgsql
 # RUN install-php-extensions pdo_pgsql
 
+RUN apk add --update nodejs npm
+RUN apk add --update npm
+
 COPY php.ini /usr/local/etc/php/conf.d/
