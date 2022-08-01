@@ -30,7 +30,10 @@ services:
 
   php80:
     container_name: php80
-    build: ./docker/php80
+    build:
+      context: ./docker/php80
+      args:
+        PHP80_VERSION: ${PHP80_VERSION}
     networks:
       - lnmp
     ports:
@@ -39,14 +42,17 @@ services:
       - ./www:/var/www/html
     working_dir: /var/www/html
     depends_on:
-      - mysql8
+      - mysql
     profiles:
       - php80
       - all
 
   php74:
     container_name: php74
-    build: ./docker/php74
+    build: 
+      context: ./docker/php74
+      args:
+        PHP74_VERSION: ${PHP74_VERSION}
     networks:
       - lnmp
     ports:
@@ -55,25 +61,25 @@ services:
       - ./www:/var/www/html
     working_dir: /var/www/html
     depends_on:
-      - mysql8
+      - mysql
     profiles:
       - php74
       - all
 
-  mysql8:
-    image: mysql:8.0.28
-    container_name: mysql8
+  mysql:
+    image: mysql:${MYSQL_VERSION}
+    container_name: mysql
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: jason
-      MYSQL_USER: jason
-      MYSQL_PASSWORD: jason
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     networks:
       - lnmp
     volumes:
-      - ./docker/mysql8:/var/lib/mysql
+      - ./docker/mysql:/var/lib/mysql
     profiles:
       - php80
       - php74
@@ -85,7 +91,7 @@ services:
     networks:
       - lnmp
     environment:
-      PMA_HOST: mysql8
+      PMA_HOST: mysql
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
       UPLOAD_LIMIT: 300M
@@ -93,7 +99,7 @@ services:
     ports:
       - 8085:80
     depends_on:
-      - mysql8
+      - mysql
     profiles:
       - php80
       - php74
