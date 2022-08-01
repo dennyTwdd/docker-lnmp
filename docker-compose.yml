@@ -26,6 +26,7 @@ services:
     profiles:
       - php80
       - php74
+      - all
 
   php80:
     container_name: php80
@@ -41,6 +42,7 @@ services:
       - mysql8
     profiles:
       - php80
+      - all
 
   php74:
     container_name: php74
@@ -56,6 +58,7 @@ services:
       - mysql8
     profiles:
       - php74
+      - all
 
   mysql8:
     image: mysql:8.0.28
@@ -74,6 +77,7 @@ services:
     profiles:
       - php80
       - php74
+      - all
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -93,5 +97,22 @@ services:
     profiles:
       - php80
       - php74
+      - all
+  redis:
+    container_name: redis
+    build: ./docker/redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./docker/redis/redis.conf/:/usr/local/etc/redis.conf
+      - ./docker/redis/data:/usr/local/redis/data
+      - ./docker/redis/redis.log:/usr/local/redis/redis.log
+    networks:
+      - lnmp
+    restart: always
+    profiles:
+      - php80
+      - php74
+      - all
 networks:
     lnmp:
