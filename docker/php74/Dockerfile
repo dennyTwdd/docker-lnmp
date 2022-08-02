@@ -1,5 +1,7 @@
 # FROM php:7.4-fpm-alpine
-FROM php:${PHP74_VERSION}
+ARG PHP74_VERSION
+
+FROM php:$PHP74_VERSION
 
 # Docker php extension 安裝的輔助腳本
 # https://github.com/mlocati/docker-php-extension-installer

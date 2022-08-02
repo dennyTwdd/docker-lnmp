@@ -33,7 +33,7 @@ services:
     build:
       context: ./docker/php80
       args:
-        PHP80_VERSION: ${PHP80_VERSION}
+        PHP80_VERSION: $PHP80_VERSION
     networks:
       - lnmp
     ports:
@@ -52,7 +52,7 @@ services:
     build: 
       context: ./docker/php74
       args:
-        PHP74_VERSION: ${PHP74_VERSION}
+        PHP74_VERSION: $PHP74_VERSION
     networks:
       - lnmp
     ports:

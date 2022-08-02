@@ -1,5 +1,6 @@
 # FROM php:8.0.21RC1-fpm-alpine3.16
-FROM php:${PHP80_VERSION}
+ARG PHP80_VERSION
+FROM php:$PHP80_VERSION
 
 
 # Docker php extension 安裝的輔助腳本
