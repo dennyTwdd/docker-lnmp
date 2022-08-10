@@ -120,5 +120,25 @@ services:
       - php80
       - php74
       - all
+  golang:
+    container_name: golang
+    build: 
+      context: ./docker/golang
+      args:
+        GOLANG_VERSION: $GOLANG_VERSION
+        GOLANG_USER: $GOLANG_USER 
+        GOLANG_UID: $GOLANG_UID 
+    
+    ports:
+      - "8888:80"
+    volumes:
+      - ./golang:/go
+    networks:
+      - lnmp
+    # restart: always
+    # profiles:
+    #   - php80
+    #   - php74
+    #   - all
 networks:
     lnmp:
