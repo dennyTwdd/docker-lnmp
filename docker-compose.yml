@@ -37,7 +37,8 @@ services:
     networks:
       - lnmp
     ports:
-      - "9000:9000"
+      - "9000:9000"      
+      - "3000:3000"
     volumes:
       - ./www:/var/www/html
     working_dir: /var/www/html
@@ -57,6 +58,7 @@ services:
       - lnmp
     ports:
       - "9000:9000"
+      - "3000:3000"
     volumes:
       - ./www:/var/www/html
     working_dir: /var/www/html

@@ -14,4 +14,4 @@ USER ${GOLANG_USER}
 
 CMD tail -f /dev/null
 
-WORKDIR /go/src/app
+WORKDIR /go
