@@ -32,11 +32,8 @@ RUN apk add --update nodejs npm
 RUN apk add --update npm
 
 USER root
-
 RUN adduser -D jason -u 1000
-
 RUN chown -R jason:jason /var/www/html
-
 USER jason
 
 COPY php.ini /usr/local/etc/php/conf.d/

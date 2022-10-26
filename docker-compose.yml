@@ -37,6 +37,7 @@ services:
     networks:
       - lnmp
     ports:
+      - "9999:9999" # nodejs 的某個專案
       - "9000:9000"      
       - "3000:3000"
     volumes:
@@ -57,6 +58,7 @@ services:
     networks:
       - lnmp
     ports:
+      - "9999:9999" # nodejs 的某個專案
       - "9000:9000"
       - "3000:3000"
     volumes:
