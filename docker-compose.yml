@@ -63,6 +63,7 @@ services:
       - "3000:3000"
     volumes:
       - ./www:/var/www/html
+    user: ${CURRENT_UID}
     working_dir: /var/www/html
     depends_on:
       - mysql
@@ -177,6 +178,22 @@ services:
     profiles:
       - mongo
       - all
+  
+  nodejs18:
+    container_name: nodejs18
+    image: node:18.12.0-alpine3.16
+    volumes:
+      - ./nodejs:/src
+    working_dir: /src
+    tty: true           # <-- This option
+    ports:
+      - 19999:19999
+    networks:
+      - lnmp
+    profiles:
+      - all
+      - php80
+      - php74
 
 networks:
     lnmp:
